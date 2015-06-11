@@ -7,7 +7,7 @@
 
 # For more detailed documentation see
 # https://atom.io/docs/latest/advanced/keymaps
-'.workspace':
+'.atom-workspace':
   'ctrl-alt-o': 'atom-css-class-checker:toggle'
   'ctrl-b' : 'atom-css-class-checker:open-source'
 
