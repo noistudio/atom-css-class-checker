@@ -18,5 +18,10 @@
     "css-parse": "~2.0.0",
     "lodash": "~2.4.1",
     "space-pen": "~5.0.0"
+  },
+  "apmInstallSource": {
+    "type": "git",
+    "source": "mykz/atom-css-class-checker",
+    "sha": "5bd799e2a5ec925b1b7680f1e9df436061a04808"
   }
 }

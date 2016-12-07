@@ -87,7 +87,7 @@ class FilesList extends PopupList
     @title.text "define in:"
 
   viewForItem: (item)->
-    prjPath = atom.project.getPath();
+    prjPath = atom.project.getPaths()[0]
     "<li>
       <div class='sel'>#{item.filename}</div>
       <div class='linepos'>#{item.path.replace(prjPath, '.')}</div>

@@ -1,4 +1,6 @@
 # atom-css-class-checker package
+This package is have contain modification version from https://github.com/mykz/atom-css-class-checker
+You need to know this package is working.
 
 This package scans html markup and shows which classes are not specified in project's CSS files.
 It also provides functionality to jump to the CSS class/id definition

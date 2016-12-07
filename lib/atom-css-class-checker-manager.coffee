@@ -24,6 +24,9 @@ class Manager
       console.log 'opening source'
       @openSource()
 
+   
+
+
 
   init: ->
     @parser = new SSParser()
@@ -79,13 +82,13 @@ class Manager
       # parsing css file if it is required
       if (@prevEditor.isCss && @prevEditor.modified)
         console.log 'did parsing required'
-        @parser.updateWithSSFile(@prevEditor.editor.getUri(), @prevEditor.editor.getText())
+        @parser.updateWithSSFile(@prevEditor.editor.getURI(), @prevEditor.editor.getText())
         @prevEditor.modified = false;
       getPrevEditor(item)
 
 
   subscribeOnHtmlEditorEvents: (editor)->
-    editorUri = editor.getUri()
+    editorUri = editor.getURI()
     compositeDisposable = new CompositeDisposable()
 
       # reparsing file on changings
@@ -137,16 +140,16 @@ class Manager
         @highlightIdRange(it.range, it.match[1], editor)
 
   removeEditorMarkersInRange: (range, editor)->
-    markers = @editorsMarkers[editor.getUri()]
+    markers = @editorsMarkers[editor.getURI()]
     return unless markers
     for i in [0...markers.length]
       if range.containsRange(markers[i].bufferMarker.range)
         markers[i].destroy()
         markers[i] = null
-    @editorsMarkers[editor.getUri()] = _.compact(markers)
+    @editorsMarkers[editor.getURI()] = _.compact(markers)
 
   removeAllEditorMarkers: (editor)->
-    uri = editor.getUri()
+    uri = editor.getURI()
     markers =  @editorsMarkers[uri]
     return unless markers
     for i in [0...markers.length]
@@ -163,7 +166,7 @@ class Manager
   createEditorMarker: (editor, range, type)->
     marker = editor.markBufferRange(range, invalidate: 'overlap')
     marker.type = type;
-    uri = editor.getUri()
+    uri = editor.getURI()
     if @editorsMarkers[uri] != undefined
       @editorsMarkers[uri].push(marker)
     else
@@ -206,6 +209,9 @@ class Manager
     else
       console.log 'starting'
       @init()
+  closeSource: ->
+    console.log('Close source');
+
 
   openSource: ->
     # opens editor with specified filename
@@ -236,12 +242,15 @@ class Manager
 
     toggleFilesList = (items, editor)->
       popup = new FilesList(editor)
+
       popup.setItems(items)
       popup.onConfirm = onConfirmFile
       popup.toggle()
 
     getMarkerInfo = (editor) =>
-      markers = @editorsMarkers[editor.getUri()]
+
+      markers = @editorsMarkers[editor.getURI()]
+      console.log(@editorsMarkers);
       cursorPoint = editor.getCursorBufferPosition()
       for i in [0...markers.length]
         range = markers[i].getBufferRange();
