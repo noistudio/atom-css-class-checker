@@ -242,7 +242,7 @@ class Manager
 
     toggleFilesList = (items, editor)->
       popup = new FilesList(editor)
-
+     
       popup.setItems(items)
       popup.onConfirm = onConfirmFile
       popup.toggle()
