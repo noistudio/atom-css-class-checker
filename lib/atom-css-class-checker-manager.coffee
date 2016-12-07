@@ -24,7 +24,7 @@ class Manager
       console.log 'opening source'
       @openSource()
 
-   
+
 
 
 
@@ -252,6 +252,8 @@ class Manager
       markers = @editorsMarkers[editor.getURI()]
       console.log(@editorsMarkers);
       cursorPoint = editor.getCursorBufferPosition()
+      if markers is undefined
+        markers=[]
       for i in [0...markers.length]
         range = markers[i].getBufferRange();
         if range.containsPoint(cursorPoint)

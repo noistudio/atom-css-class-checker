@@ -21,7 +21,7 @@
   },
   "apmInstallSource": {
     "type": "git",
-    "source": "mykz/atom-css-class-checker",
-    "sha": "5bd799e2a5ec925b1b7680f1e9df436061a04808"
+    "source": "noistudio/atom-css-class-checker",
+    "sha": "5df516381a9f808e5387b8e5c09c20e3228dafe2"
   }
 }
